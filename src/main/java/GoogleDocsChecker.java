@@ -53,9 +53,11 @@ public class GoogleDocsChecker {
                 System.out.println("Checking...");
                 // Перевіряємо на зміну
                 if (lastContentHash == null || !lastContentHash.equals(currentContentHash)) {
+                    if(lastContentHash != null) {
+                        System.out.println("Document has been edited.");
+                        sendTelegramMessage("Document edited");
+                    }
                     lastContentHash = currentContentHash;
-                    System.out.println("Document has been edited.");
-                    sendTelegramMessage("Document edited");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
